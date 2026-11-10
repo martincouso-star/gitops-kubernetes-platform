@@ -1,0 +1,5 @@
+# Optional GCS backend. Copy to backend.hcl and do not commit it.
+#   terraform init -backend-config=backend.hcl
+
+bucket = "REPLACE_WITH_GCS_STATE_BUCKET"
+prefix = "gitops-platform/gke"

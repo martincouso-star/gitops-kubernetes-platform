@@ -1,0 +1,12 @@
+aws_region         = "us-east-1"
+cluster_name       = "gitops-dev"
+kubernetes_version = "1.36"
+vpc_cidr           = "10.10.0.0/16"
+
+# TEST-NET-3 (RFC 5737). Replace with the CIDR you will call the API from.
+api_access_cidrs = ["203.0.113.10/32"]
+
+# Placeholder hosted zone. Replace with a zone you control.
+route53_zone_arns = ["arn:aws:route53:::hostedzone/Z00000000000000000000"]
+
+node_instance_types = ["t3.large"]

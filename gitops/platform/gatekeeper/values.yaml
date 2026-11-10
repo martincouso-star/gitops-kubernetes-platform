@@ -1,0 +1,5 @@
+replicas: 2
+audit:
+  replicas: 1
+psp:
+  enabled: false

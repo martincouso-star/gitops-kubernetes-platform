@@ -1,0 +1,16 @@
+compact: true
+framework:
+  - terraform
+download-external-modules: false
+skip-path:
+  - .terraform
+skip-check:
+  # Upstream registry modules are pinned to an exact version tag.
+  # CKV_TF_1 wants a git commit hash, which fights the Terraform Registry
+  # release process these modules are published with.
+  - CKV_TF_1
+  # The state-bucket key policy grants kms:* to the account root so the
+  # key cannot be locked out. That statement is the AWS-documented pattern.
+  - CKV_AWS_109
+  - CKV_AWS_111
+  - CKV_AWS_356

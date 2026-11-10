@@ -1,0 +1,4 @@
+state_bucket_name = "replace-me-gitops-platform-tfstate"
+aws_region         = "us-east-1"
+replica_region     = "us-west-2"
+force_destroy      = false
