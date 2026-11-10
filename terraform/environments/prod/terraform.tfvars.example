@@ -1,0 +1,12 @@
+aws_region         = "us-east-1"
+cluster_name       = "gitops-prod"
+kubernetes_version = "1.36"
+vpc_cidr           = "10.20.0.0/16"
+
+# Kept even though the public endpoint is disabled, so turning it on later
+# does not default to the world. Replace with your network.
+api_access_cidrs = ["203.0.113.10/32"]
+
+route53_zone_arns = ["arn:aws:route53:::hostedzone/Z00000000000000000000"]
+
+node_instance_types = ["m6i.large"]

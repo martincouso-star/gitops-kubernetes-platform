@@ -1,0 +1,11 @@
+# Copy to backend.hcl (gitignored) after the remote-state stack exists.
+#   terraform init -backend-config=backend.hcl
+#
+# CI runs `terraform init -backend=false` and does not read this file.
+
+bucket       = "REPLACE_WITH_STATE_BUCKET"
+key          = "gitops-platform/prod/terraform.tfstate"
+region       = "us-east-1"
+encrypt      = true
+use_lockfile = true
+kms_key_id   = "REPLACE_WITH_STATE_KMS_KEY_ARN"

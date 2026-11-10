@@ -1,0 +1,69 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../argocd/projects
+  - ../../argocd/applications
+patches:
+  - target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: Application
+      name: ingress-nginx
+    patch: |-
+      - op: add
+        path: /spec/sources/0/helm/valueFiles/-
+        value: $values/gitops/platform/ingress-nginx/values-prod.yaml
+  - target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: Application
+      name: cert-manager
+    patch: |-
+      - op: add
+        path: /spec/sources/0/helm/valueFiles/-
+        value: $values/gitops/platform/cert-manager/values-prod.yaml
+  - target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: Application
+      name: external-dns
+    patch: |-
+      - op: add
+        path: /spec/sources/0/helm/valueFiles/-
+        value: $values/gitops/platform/external-dns/values-prod.yaml
+  - target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: Application
+      name: monitoring
+    patch: |-
+      - op: add
+        path: /spec/sources/0/helm/valueFiles/-
+        value: $values/gitops/platform/monitoring/values-prod.yaml
+  - target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: Application
+      name: gatekeeper
+    patch: |-
+      - op: add
+        path: /spec/sources/0/helm/valueFiles/-
+        value: $values/gitops/platform/gatekeeper/values-prod.yaml
+  - target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: Application
+      name: platform-config
+    patch: |-
+      - op: replace
+        path: /spec/source/path
+        value: gitops/platform/platform-config/overlays/prod
+  - target:
+      group: argoproj.io
+      version: v1alpha1
+      kind: Application
+      name: sample-app
+    patch: |-
+      - op: replace
+        path: /spec/source/path
+        value: gitops/workloads/sample-app/overlays/prod

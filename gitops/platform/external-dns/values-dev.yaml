@@ -1,0 +1,5 @@
+txtOwnerId: gitops-dev
+serviceAccount:
+  annotations:
+    # AWS example account 111122223333. Replace with the external_dns_role_arn output.
+    eks.amazonaws.com/role-arn: arn:aws:iam::111122223333:role/gitops-dev-external-dns

@@ -1,0 +1,4 @@
+serviceAccount:
+  annotations:
+    # AWS example account 111122223333. Replace with the cert_manager_role_arn output.
+    eks.amazonaws.com/role-arn: arn:aws:iam::111122223333:role/gitops-dev-cert-manager

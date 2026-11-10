@@ -1,0 +1,21 @@
+fullnameOverride: external-dns
+provider:
+  name: aws
+policy: upsert-only
+registry: txt
+sources:
+  - service
+  - ingress
+domainFilters:
+  - example.com
+extraArgs:
+  aws-zone-type: public
+serviceAccount:
+  name: external-dns
+resources:
+  requests:
+    cpu: 25m
+    memory: 64Mi
+  limits:
+    cpu: 100m
+    memory: 128Mi

@@ -1,0 +1,6 @@
+# Rendered by CI so the chart still templates. The local cluster does not sync
+# this add-on: external-dns needs a real DNS account.
+txtOwnerId: gitops-local
+policy: upsert-only
+domainFilters:
+  - example.com

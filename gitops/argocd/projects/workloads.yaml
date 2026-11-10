@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: workloads
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  description: Applications deployed on top of the platform.
+  sourceRepos:
+    - https://github.com/martincouso-star/gitops-kubernetes-platform
+    - git://git-server.git-server.svc.cluster.local/platform.git
+  destinations:
+    - namespace: sample-app
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"
